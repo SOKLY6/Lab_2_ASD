@@ -14,7 +14,8 @@ typedef struct Table {
 
 int table_init(Table *table);
 int table_realloc(Table *table);
-int table_create(const char *file_name, Table *table);
+int table_add_key_value(Table *table, char *key, char *value);
+int table_create_from_file(const char *file_name, Table *table);
 void table_print(const Table *table);
 void table_destroy(Table *table);
 

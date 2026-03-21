@@ -1,6 +1,8 @@
 #ifndef ERRORS_H
 #define ERRORS_H
 
-#define ALLOCATION_MEMORY_ERROR
+#define ALLOCATION_MEMORY_ERROR 1
+#define REALLOCATION_MEMORY_ERROR 2
+#define PTR_NULL 3
 
 #endif
