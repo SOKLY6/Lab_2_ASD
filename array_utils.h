@@ -14,9 +14,11 @@ typedef struct Table {
 
 int table_init(Table *table);
 int table_realloc(Table *table);
-int table_add_key_value(Table *table, char *key, char *value);
+int table_add_key_value(Table *table, char* *key, char* *value);
 int table_create_from_file(const char *file_name, Table *table);
+void table_sort(Table *table, int (*compare)(const void *, const void *));
+int table_find_index(const Table *table, const char *key, int (*compare)(const void *, const void *));
 void table_print(const Table *table);
-void table_destroy(Table *table);
+int table_destroy(Table *table);
 
 #endif

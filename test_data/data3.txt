@@ -1,0 +1,7 @@
+3
+Banana
+Fruit
+Apple
+Fruit
+Cherry
+Berry
