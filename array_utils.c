@@ -8,11 +8,11 @@
 int table_init(Table *table){
     table->len = 0;
     table->capacity = BASE_CAPACITY;
-    table->keys = calloc(table->capacity, sizeof(char *));
+    table->keys = (char **)calloc(table->capacity, sizeof(char *));
     if (table->keys == NULL) {
         return ALLOCATION_MEMORY_ERROR;
     }
-    table->values = calloc(table->capacity, sizeof(char *));
+    table->values = (char **)calloc(table->capacity, sizeof(char *));
     if (table->values == NULL) {
         free(table->keys);
         return ALLOCATION_MEMORY_ERROR;
@@ -23,8 +23,8 @@ int table_init(Table *table){
 
 int table_realloc(Table *table){
     size_t new_capacity = table->capacity * 2;
-    char **new_keys = calloc(new_capacity, sizeof(char *));
-    char **new_values = calloc(new_capacity, sizeof(char *));
+    char **new_keys = (char **)calloc(new_capacity, sizeof(char *));
+    char **new_values = (char **)calloc(new_capacity, sizeof(char *));
     if (new_keys == NULL || new_values == NULL) {
         if (new_keys != NULL) {
             free(new_keys);
@@ -110,11 +110,11 @@ int table_create_from_file(const char *file_path, Table *table) {
         if ((ptr = strchr(key_buf, '\n')) != NULL) *ptr = '\0';
         if ((ptr = strchr(value_buf, '\n')) != NULL) *ptr = '\0';
 
-        char *key = malloc(strlen(key_buf) + 1);
+        char *key = (char *)malloc(strlen(key_buf) + 1);
         if (key != NULL) {
             strcpy(key, key_buf);
         }
-        char *value = malloc(strlen(value_buf) + 1);
+        char *value = (char *)malloc(strlen(value_buf) + 1);
         if (value != NULL) {
             strcpy(value, value_buf);
         }
